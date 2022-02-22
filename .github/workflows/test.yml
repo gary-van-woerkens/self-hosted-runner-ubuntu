@@ -1,0 +1,27 @@
+name: Tests
+
+on:
+  push:
+
+concurrency:
+  cancel-in-progress: true
+  group: tests-${{ github.ref }}
+
+jobs:
+
+  ##############################################################################
+  ## TEST APPLICATION
+  ##############################################################################
+  test:
+    name: Test application
+    runs-on: self-hosted
+    steps:
+
+    # just for fun
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Run tests
+      run: echo "It Works!"
